@@ -1,0 +1,13 @@
+body {
+  font-weight: normal;
+  font-style: normal;
+  color: #000;
+  overflow-x: hidden;
+  margin: 0;
+  text-align: left;
+  background-color: #fff;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
