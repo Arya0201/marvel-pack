@@ -62,6 +62,9 @@ nav ul {
   color: #b18150 !important;
 }
 
+.isActive{
+  color: #b18150 !important;
+}
 .header-num {
   display: flex;
   gap: 16px;
@@ -238,6 +241,7 @@ li {
 }
 .show{
   display: block;
+  z-index: 2;
 }
 .hide{
   display: none;

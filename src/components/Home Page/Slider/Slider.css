@@ -1,0 +1,29 @@
+
+.slideShowContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.each-slide img {
+    width: 100vw;
+    
+}
+
+.default-nav{
+    visibility: hidden !important;
+    background: rgba(255, 252, 252, 0.75) !important;
+    width: 40px !important;
+    height: 40px !important;
+    position: absolute !important;
+    display: block !important;
+    z-index: 1000 !important;
+    border: 1px solid #ffffff !important;
+}
+.slideShowContainer:hover .default-nav{
+    visibility: visible !important;
+}
+@media (max-width: 790px){
+    .default-nav{
+        display: none !important;
+    }
+}

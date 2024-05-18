@@ -3,6 +3,7 @@ import "./Header.css";
 import WebLogo from "../../assets/Marvel-Pack-Industries-Logo.png";
 import WebLine from "../../assets/line-1.png";
 import PhoneIcon from "./../../assets/phone-call.png";
+import {  NavLink } from "react-router-dom";
 
 const MobileSubmenuItem = ({ text }) => {
   return (
@@ -12,14 +13,14 @@ const MobileSubmenuItem = ({ text }) => {
   );
 };
 const SubmenuItem = ({ text }) => {
- return( <li className="menu-item">
-    <a href="#">{text}</a>
-  </li>)
-}
+  return (
+    <li className="menu-item">
+      <a href="#">{text}</a>
+    </li>
+  );
+};
 
 const Header = () => {
-
-
   const [menuVisible, setMenuVisible] = useState(false);
   const [subMenuVisible, setSubMenuVisible] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -38,7 +39,18 @@ const Header = () => {
   const toggleSubMenu = () => {
     setSubMenuVisible(!subMenuVisible);
   };
-let subMenu =["Food Packaging Box","Auto Parts Industry","Pharma Industry","Electric Industry","Engineering Industry","Metal Industry","Plastic Industry","Cosmetic Product Box","Water Purifier Industry","Other Industries"]
+  let subMenu = [
+    "Food Packaging Box",
+    "Auto Parts Industry",
+    "Pharma Industry",
+    "Electric Industry",
+    "Engineering Industry",
+    "Metal Industry",
+    "Plastic Industry",
+    "Cosmetic Product Box",
+    "Water Purifier Industry",
+    "Other Industries",
+  ];
 
   return (
     <header>
@@ -51,9 +63,15 @@ let subMenu =["Food Packaging Box","Auto Parts Industry","Pharma Industry","Elec
           <nav>
             <ul>
               <li>
-                <a className="nav-link" href="#">
+                
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "isActive" : ""}`
+                  }
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
                 <a className="nav-link" href="#">
@@ -70,11 +88,9 @@ let subMenu =["Food Packaging Box","Auto Parts Industry","Pharma Industry","Elec
                   Product
                 </a>
                 <ul className="sub-menu">
-                 
-                  {subMenu.map((item)=>{
-                     return <SubmenuItem text={item} />;
+                  {subMenu.map((item) => {
+                    return <SubmenuItem text={item} />;
                   })}
-                  
                 </ul>
               </li>
               <li>
@@ -109,19 +125,31 @@ let subMenu =["Food Packaging Box","Auto Parts Industry","Pharma Industry","Elec
             </span>
           </span>
         </div>
-        <div className={`mobile-menu ${(menuVisible && (width < 990)) ? 'show' : 'hide'}`}>
+        <div
+          className={`mobile-menu ${
+            menuVisible && width < 990 ? "show" : "hide"
+          }`}
+        >
           <nav className="mean-nav">
             <ul>
               <li className="mobile-menu-item">
-                <a href="#">Home</a>
+                 <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `${isActive ? "isActive" : ""}`
+                  } 
+                >
+                  Home
+                </NavLink>
               </li>
+
               <li className="mobile-menu-item">
                 <a href="#">About Us</a>
               </li>
               <li className="mobile-menu-item">
                 <a href="#">Infrastructure</a>
               </li>
-              <li className="mobile-menu-item" >
+              <li className="mobile-menu-item">
                 <a
                   href="#"
                   className="menu-item-product"
@@ -138,10 +166,9 @@ let subMenu =["Food Packaging Box","Auto Parts Industry","Pharma Industry","Elec
                   +
                 </a>
 
-                <ul className={`submenu ${subMenuVisible ? 'show' : 'hide'}`}>
-                  
-                  {subMenu.map((item)=>{
-                     return <MobileSubmenuItem text={item} />;
+                <ul className={`submenu ${subMenuVisible ? "show" : "hide"}`}>
+                  {subMenu.map((item) => {
+                    return <MobileSubmenuItem text={item} />;
                   })}
                 </ul>
               </li>
